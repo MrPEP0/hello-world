@@ -51,8 +51,11 @@ jobs:
     docker:
       - image: circleci/node:13.8.0
     steps:
-      - print_pipeline_id
-
+      - print_pipeline_d
+      - run:  # Exercise: Job Failures
+          name: Upload Failed Tests
+          command: return 1
+          when: on_fail
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
